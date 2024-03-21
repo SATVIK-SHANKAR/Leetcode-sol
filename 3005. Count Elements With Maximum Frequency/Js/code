@@ -1,0 +1,21 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxFrequencyElements = function(nums) {
+    const frequencyMap = new Map();
+    let maxFrequency = 0;
+
+    // Count frequencies of numbers in nums
+    for (const num of nums) {
+        frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+        maxFrequency = Math.max(maxFrequency, frequencyMap.get(num));
+    }
+
+    // Count the numbers with maximum frequency
+    let count = 0;
+    for (const [num, frequency] of frequencyMap) {
+        if (frequency === maxFrequency) {
+            count++;
+        }
+    }
